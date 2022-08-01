@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnchances.hyx.dao.ExamDao">
+
+    <resultMap type="com.hnchances.hyx.entity.Exam" id="ExamMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="examname" column="examName" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <!-- 
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into myScoreManage.exam(examName, status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.examname}, #{entity.status})
+        </foreach>
+    </insert>
+    -->
+
+</mapper>
+
+

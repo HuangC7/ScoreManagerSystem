@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnchances.hyx.dao.StudentDao">
+
+    <resultMap type="com.hnchances.hyx.entity.Student" id="StudentMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
+        <result property="idcard" column="idcard" jdbcType="VARCHAR"/>
+        <result property="classid" column="classID" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <!-- 
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into myScoreManage.student(name, birthday, idcard, classID, status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.name}, #{entity.birthday}, #{entity.idcard}, #{entity.classid}, #{entity.status})
+        </foreach>
+    </insert>
+    -->
+
+</mapper>
+
+

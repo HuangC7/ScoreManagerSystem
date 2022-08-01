@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnchances.hyx.dao.GradesMapper">
+
+    <resultMap type="com.hnchances.hyx.entity.Grades" id="GradesMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="courseid" column="courseID" jdbcType="VARCHAR"/>
+        <result property="examid" column="examID" jdbcType="INTEGER"/>
+        <result property="classid" column="classID" jdbcType="INTEGER"/>
+        <result property="grades" column="grades" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="studentid" column="studentID" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <!-- 
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into myScoreManage.grades(courseID, examID, classID, grades, status, studentID)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.courseid}, #{entity.examid}, #{entity.classid}, #{entity.grades}, #{entity.status}, #{entity.studentid})
+        </foreach>
+    </insert>
+    -->
+
+</mapper>
+
+

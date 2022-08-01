@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnchances.hyx.dao.UserDao">
+
+    <resultMap type="com.hnchances.hyx.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="password" column="passWord" jdbcType="VARCHAR"/>
+        <result property="username" column="userName" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="truename" column="trueName" jdbcType="VARCHAR"/>
+        <result property="identity" column="identity" jdbcType="INTEGER"/>
+        <result property="classid" column="classID" jdbcType="INTEGER"/>
+        <result property="courseid" column="courseID" jdbcType="INTEGER"/>
+        <result property="studentid" column="studentID" jdbcType="INTEGER"/>
+        <result property="creatdatetime" column="creatDateTime" jdbcType="TIMESTAMP"/>
+        <result property="updatedatetime" column="updateDateTime" jdbcType="TIMESTAMP"/>
+        <result property="lastlogindatetime" column="lastLoginDateTime" jdbcType="TIMESTAMP"/>
+        <result property="loginip" column="loginIP" jdbcType="VARCHAR"/>
+        <result property="updatebyid" column="updateByID" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="verify" column="verify" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <!-- 
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into myScoreManage.user(passWord, userName, phone, trueName, identity, classID, courseID, studentID, creatDateTime, updateDateTime, lastLoginDateTime, loginIP, updateByID, status, verify)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.password}, #{entity.username}, #{entity.phone}, #{entity.truename}, #{entity.identity}, #{entity.classid}, #{entity.courseid}, #{entity.studentid}, #{entity.creatdatetime}, #{entity.updatedatetime}, #{entity.lastlogindatetime}, #{entity.loginip}, #{entity.updatebyid}, #{entity.status}, #{entity.verify})
+        </foreach>
+    </insert>
+    -->
+
+</mapper>
+
+
