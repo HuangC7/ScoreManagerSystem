@@ -8,6 +8,12 @@ import com.hnchances.hyx.entity.Student;
  *
  */
 public interface StudentService extends IService<Student> {
-
+    /**
+     * 根据学生姓名获取学生用户信息
+     *
+     * @param studentName
+     * @return Student
+     */
+    Student getStudentByStudentName(String studentName);
 }
 

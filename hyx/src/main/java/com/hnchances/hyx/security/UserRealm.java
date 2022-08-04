@@ -12,6 +12,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,25 +23,39 @@ public class UserRealm extends AuthorizingRealm {
     @Autowired
     private UserService userService;
 
-    //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
         String username = (String) SecurityUtils.getSubject().getPrincipal();
         User user = userService.getUserByUserName(username);
-
         if(user!=null){
             SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
             Set<String> set= new HashSet<>();
             set.add(user.getIdentity().toString());
             authorizationInfo.setRoles(set);
-            return authorizationInfo;
+            //0-学生，1-老师，2- 领导或管理（可看所有班级）
+            if (user.getIdentity() == 0) {
+                authorizationInfo.addStringPermissions(new ArrayList<>(Arrays.asList(
+                        "roles:user:select", "roles:user:update")));
+                return authorizationInfo;
+            } else if (user.getIdentity() == 1) {
+                authorizationInfo.addStringPermissions(new ArrayList<>(Arrays.asList(
+                        "roles:user:select", "roles:user:update", "roles:user:del",
+                        "roles:teacher:grades:select","roles:grades:add","roles:grades:update",
+                        "roles:grades:del"
+                        )));
+                return authorizationInfo;
+            } else if (user.getIdentity() == 2) {
+                authorizationInfo.addStringPermissions(new ArrayList<>(Arrays.asList(
+                        "roles:user:select", "roles:user:update", "roles:user:del",
+                        "roles:admin:grades:select","roles:grades:add","roles:grades:update",
+                        "roles:grades:del"
+                )));
+                return authorizationInfo;
+            }
         }
-
         return null;
     }
 
-    //认证
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         //1.获取用户名

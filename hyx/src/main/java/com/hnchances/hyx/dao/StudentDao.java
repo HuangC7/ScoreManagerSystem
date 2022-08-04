@@ -10,7 +10,6 @@ import com.hnchances.hyx.entity.Student;
  */
 @Mapper
 public interface StudentDao extends BaseMapper<Student> {
-
 }
 
 

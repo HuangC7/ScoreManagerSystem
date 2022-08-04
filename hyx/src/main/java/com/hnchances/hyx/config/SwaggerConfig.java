@@ -1,10 +1,11 @@
 package com.hnchances.hyx.config;
 
+import com.baomidou.mybatisplus.extension.api.ApiController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -18,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig implements WebMvcConfigurer {
+public class SwaggerConfig{
 
     /**
      *
@@ -26,12 +27,12 @@ public class SwaggerConfig implements WebMvcConfigurer {
      *
      */
     @Bean
-    public Docket docket(){
+    public Docket createRestApi(){
         return  new Docket(DocumentationType.SWAGGER_2)
-                .groupName("学生成绩管理系统")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.hnchances.hyx.controller"))
+                .paths(PathSelectors.any())
                 .build();
     }
 
@@ -40,7 +41,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
      * 创建swagger的相关作者信息
      *
      */
-    public ApiInfo apiInfo(){
+    private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                  // 文档页标题
                 .title("学生成绩管理系统的API文档")
@@ -49,15 +50,15 @@ public class SwaggerConfig implements WebMvcConfigurer {
                 // 文档版本号
                 .version("1.0")
                 // 描述
-                .description("API 描述")
+                .description("学生成绩管理系统的部分API")
                 .build();
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("swagger-ui.html")
+//                .addResourceLocations("classpath:/META-INF/resources/");
+//        registry.addResourceHandler("/webjars/**")
+//                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+//    }
 }

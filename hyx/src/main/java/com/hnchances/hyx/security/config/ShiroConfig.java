@@ -32,17 +32,6 @@ public class ShiroConfig {
         // 过滤规则
         Map<String, String> filterMap = new LinkedHashMap<>();
 
-        // 用户权限
-        filterMap.put("/api//user/selectUserInfo", "perms[roles:user:userinfo]");
-        filterMap.put("/api//user/updateById", "perms[roles:user:update]");
-        filterMap.put("/api//user/removeByIds", "perms[roles:user:del]");
-
-        // 成绩表权限
-        filterMap.put("/api//grades/insert", "perms[roles:grades:add]");
-        filterMap.put("/api//grades/updateById", "perms[roles:grades:update]");
-        filterMap.put("/api//grades/removeByIds", "perms[roles:grades:del]");
-        filterMap.put("/api//grades/selectPage", "perms[roles:grades:select]");
-
         // 自定义过滤器
         HashMap<String, Filter> filterHashMap = new HashMap<>();
         filterHashMap.put("jwt", new NoSessionFilter());

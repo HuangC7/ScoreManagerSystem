@@ -12,6 +12,25 @@
         <result property="studentid" column="studentID" jdbcType="INTEGER"/>
     </resultMap>
 
+    <select id="queryStudentGradeByStudentName" parameterType="java.lang.String" resultMap="gradeAll">
+        SELECT * FROM grades g INNER JOIN student s on g.studentID=s.id
+        WHERE g.`status`=0 and  s.`status`=0 and s.`name`=#{studentName}
+    </select>
+
+    <select id="queryStudentGradeByCourseName" parameterType="java.lang.String" resultMap="gradeAll">
+        SELECT * FROM grades g INNER JOIN course c on g.courseID=c.id
+        WHERE g.`status`=0 and c.`status`=0 and c.`courseName`=#{examName}
+    </select>
+
+    <select id="queryStudentGradeByClassName" parameterType="java.lang.String" resultMap="gradeAll">
+        SELECT * FROM grades g INNER JOIN class c on g.classID=c.id
+        WHERE g.`status`=0 and c.`status`=0 and c.`className`=#{className}
+    </select>
+
+    <select id="queryStudentGradeByExamName" parameterType="java.lang.String" resultMap="gradeAll">
+        SELECT * FROM grades g INNER JOIN exam e on g.examID=e.id
+        WHERE g.`status`=0 and e.`status`=0 and e.`examName`=#{examName}
+    </select>
     <!-- 批量插入 -->
     <!-- 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">

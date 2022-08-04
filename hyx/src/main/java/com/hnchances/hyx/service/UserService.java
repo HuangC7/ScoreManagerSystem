@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public interface UserService extends IService<User> {
 
      /**
-       * 根据用户姓名获取用户信息
+       * 根据用户名获取用户信息
        *
        * @param username
        * @return User

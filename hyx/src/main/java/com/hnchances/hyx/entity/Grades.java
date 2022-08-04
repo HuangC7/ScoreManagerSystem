@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@NoArgsConstructor
 @ApiModel(description = "成绩")
 @SuppressWarnings("serial")
 public class Grades extends Model<Grades> implements Serializable {
@@ -43,5 +45,14 @@ public class Grades extends Model<Grades> implements Serializable {
             
     @ApiModelProperty("学生关联id")
     private Long studentid;
+
+    public Grades(String courseid, Integer examid, Integer classid, BigDecimal grades, Integer status, Long studentid) {
+        this.courseid = courseid;
+        this.examid = examid;
+        this.classid = classid;
+        this.grades = grades;
+        this.status = status;
+        this.studentid = studentid;
+    }
 }
 

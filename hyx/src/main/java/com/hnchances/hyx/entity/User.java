@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,6 +17,7 @@ import java.util.Date;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@NoArgsConstructor
 @ApiModel(description = "用户")
 @SuppressWarnings("serial")
 @JsonIgnoreProperties(allowSetters = true, value = {"password"})
@@ -69,5 +71,16 @@ public class User extends Model<User> implements Serializable {
             
     @ApiModelProperty("0-未审核,1-审核")
     private Integer verify;
+
+
+    public User(String password, String username, String phone, String truename, Integer identity, Date creatdatetime, Integer status) {
+        this.password = password;
+        this.username = username;
+        this.phone = phone;
+        this.truename = truename;
+        this.identity = identity;
+        this.creatdatetime = creatdatetime;
+        this.status = status;
+    }
 }
 
